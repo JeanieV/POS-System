@@ -10,7 +10,19 @@ require './include/addItem.php';
 
 if (isset($_POST['selectedItemValue'])) {
 
-    // code to add item
+    // Retrieve the selected item from the $_SESSION['menuItemArray'] based on the selected value
+    $selectedItem = null;
+    foreach ($_SESSION['menuItemArray'] as $menuItem) {
+        if ($menuItem->get_name() === $_POST['selectedItemValue']) {
+            $selectedItem = $menuItem;
+            break;
+        }
+    }
+
+    if ($selectedItem) {
+        // Add the selected item to the order
+        addItem($selectedItem);
+    }
 }
 ?>
 
@@ -27,7 +39,7 @@ if (isset($_POST['selectedItemValue'])) {
 
 <body>
     <h1>
-        <span style="color:red">Select</span> and <span style="color:blue">Save</span>
+        Select and Save
     </h1>
 
     <hr>
@@ -38,6 +50,9 @@ if (isset($_POST['selectedItemValue'])) {
                 Amount: R
                 <?php echo $_SESSION['orderTotal']; ?>
             </span>
+            <form method="POST">
+                <button type="submit" name="confirmOrder"> Confirm Order </button>
+            </form>
         </div>
     </div>
 
@@ -54,15 +69,17 @@ if (isset($_POST['selectedItemValue'])) {
                         <div class="card1">
 
                             <div class="card-body">
-                                <h4 class="card-title">
+                                <h2 class="card-title">
                                     <?php echo $menuItem->get_name(); ?>
-                                </h4>
-                                <p class="card-text"> R
+                                </h2>
+                                <img src="./static/img/<?php echo $menuItem->get_image(); ?>" alt="Menu Item Image"
+                                    class="card-image">
+                                <h3 class="card-text"> Price: R
                                     <?php echo $menuItem->get_price(); ?>
-                                </p>
-                                <p class="card-text">
+                                </h3>
+                                <h3 class="card-text"> Barcode:
                                     <?php echo $menuItem->get_barcode(); ?>
-                                </p>
+                                </h3>
                             </div>
                         </div>
                     </button>

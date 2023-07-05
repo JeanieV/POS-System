@@ -3,47 +3,56 @@
         {
             "name": "LG TV",
             "price": 100,
-            "barcode": 18367
+            "barcode": 18367,
+            "image": "image1.jpg"
         },
         {
             "name": "Defy Kettle",
             "price": 50,
-            "barcode": 23111
+            "barcode": 23111,
+            "image": "image2.jpeg"
         },
         {
             "name": "HiSense Headset",
             "price": 80,
-            "barcode": 14837
+            "barcode": 14837,
+            "image": "image3.webp"
         },
         {
             "name": "Samsung Microwave",
             "price": 100,
-            "barcode": 30921
+            "barcode": 30921,
+            "image": "image4.jpeg"
         },
         {
             "name": "JVC Home Theatre System",
             "price": 70,
-            "barcode": 83120
+            "barcode": 83120,
+            "image": "image5.jpeg"
         },
         {
             "name": "Radio JVC",
             "price": 20,
-            "barcode": 82180
+            "barcode": 82180,
+            "image": "image6.jpeg"
         },
         {
             "name": "Samsung Washing Machine",
             "price": 270,
-            "barcode": 30299
+            "barcode": 30299,
+            "image": "image7.jpeg"
         },
         {
             "name": "Telefunken TV",
             "price": 70,
-            "barcode": 31204
+            "barcode": 31204,
+            "image": "image8.jpeg"
         },
         {
             "name": "Philips Air Fryer",
             "price": 90,
-            "barcode": 13204
+            "barcode": 13204,
+            "image": "image9.jpeg"
         }
     ]
 }

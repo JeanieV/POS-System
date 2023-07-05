@@ -8,13 +8,17 @@ class MenuItem {
     public int $price;
 
     public int $barcode;
+    
+    public $image;
+    
 
     // constructor
-    function __construct(int $barcode, string $name, int $price)
+    function __construct(int $barcode, string $name, int $price, $image)
     {
         $this->name = $name;
         $this->price = $price;
         $this->barcode = $barcode;
+        $this->image = $image;
     }
 
     // Methods
@@ -42,6 +46,15 @@ class MenuItem {
     function set_barcode($barcode)
     {
         $this->barcode = $barcode;
+    }
+
+    public function get_image()
+    {
+        return $this->image;
+    }
+    function set_image($image)
+    {
+        $this->image = $image;
     }
 }
 

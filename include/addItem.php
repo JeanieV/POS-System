@@ -21,7 +21,7 @@ function loadData($jsonFile)
     $items = json_decode($json)->items;
     $menuItemArray = array();
     foreach ($items as $item) {
-        array_push($menuItemArray, new MenuItem($item->barcode, $item->name, $item->price));
+        array_push($menuItemArray, new MenuItem($item->barcode, $item->name, $item->price, $item->image));
     }
 
     return $menuItemArray;
@@ -32,11 +32,18 @@ $_SESSION['menuItemArray'] = loadData($jsonFile);
 
 
 
-
+// Adds the menu order to the array
 function addItem(MenuItem $menuItem)
 {
+    // Add the menu item to the order session variable
+    $_SESSION['order'][] = $menuItem;
 
-    // business logic here..
+    // Add the item's price to the orderTotal session variable
+    $_SESSION['orderTotal'] += $menuItem->get_price();
 
     return;
+}
+
+if(isset($_POST['confirmOrder'])){
+    header("Location: ./views/checkout.php");
 }

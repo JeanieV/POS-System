@@ -1,4 +1,4 @@
-body{
+body {
     background-color: #C7A19B;
 }
 
@@ -9,9 +9,9 @@ body{
 
 .till__console {
     padding: 1rem;
-    background-color: black;
-    color: rgb(14, 182, 14);
-    font-size: 1.25rem;
+    background-color: white;
+    color: #47484A;
+    font-size: 25px;
 }
 
 
@@ -25,11 +25,12 @@ button {
     outline: none;
     margin: auto;
 }
+
 button:hover {
     cursor: pointer;
 }
 
-.cardContainer{
+.cardContainer {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -37,8 +38,10 @@ button:hover {
 
 .homeCard {
     background-color: white;
-    width: 20vw;
-    height: 50vh;
+    width: 30vw;
+    height: 80vh;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .homeCard:hover {
@@ -54,8 +57,39 @@ button:hover {
     text-align: center;
 }
 
-.allCards{
+.allCards {
     margin: auto;
+}
+
+h1 {
+    font-size: 70px;
+    color: #C7A19B;
+    padding: 15px;
+    text-align: center;
+    background-color: white;
+    width: max-content;
+    margin: auto;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 30px;
+    color: #47484A;
+    padding: 15px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 20px;
+    color: #47484A;
+    padding: 15px;
+    text-align: center;
+}
+
+.card-image{
+    width: 180px;
+    height: 200px;
 }
 
 .checkout {
