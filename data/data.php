@@ -1,11 +1,11 @@
 <?php
 
-$items = [ 
+$items = [
     [
         "name" => "LG TV",
         "price" => 100,
         "barcode" => 18367
-    ], 
+    ],
     [
         "name" => "Defy Kettle",
         "price" => 50,
@@ -15,12 +15,12 @@ $items = [
         "name" => "HiSense Headset",
         "price" => 80,
         "barcode" => 14837
-    ],     
+    ],
     [
         "name" => "Samsung Microwave",
         "price" => 100,
         "barcode" => 30921
-    ],     
+    ],
     [
         "name" => "JVC Home Theatre System",
         "price" => 70,
@@ -47,3 +47,11 @@ $items = [
         "barcode" => 13204
     ]
 ];
+
+// Convert $items array to JSON format
+$jsonData = json_encode($items);
+
+// Save JSON data to a file (data.json)
+file_put_contents('data.json', $jsonData);
+
+?>
