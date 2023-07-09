@@ -45,5 +45,18 @@ function addItem(MenuItem $menuItem)
 }
 
 if(isset($_POST['confirmOrder'])){
-    header("Location: ./views/checkout.php");
+
+    if($_SESSION['orderTotal'] !== 0){
+        header("Location: ./views/checkout.php");
+    }
+    else{
+        echo "<h2> Please select an item to be directed to Checkout </h2>";
+    }
+   
 }
+
+if(isset($_POST['clearOrder'])){
+    $_SESSION['orderTotal'] = 0;
+}
+
+?>

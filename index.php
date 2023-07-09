@@ -10,7 +10,6 @@ require './include/addItem.php';
 
 if (isset($_POST['selectedItemValue'])) {
 
-    // Retrieve the selected item from the $_SESSION['menuItemArray'] based on the selected value
     $selectedItem = null;
     foreach ($_SESSION['menuItemArray'] as $menuItem) {
         if ($menuItem->get_name() === $_POST['selectedItemValue']) {
@@ -20,7 +19,6 @@ if (isset($_POST['selectedItemValue'])) {
     }
 
     if ($selectedItem) {
-        // Add the selected item to the order
         addItem($selectedItem);
     }
 }
@@ -50,10 +48,11 @@ if (isset($_POST['selectedItemValue'])) {
                 Amount: R
                 <?php echo $_SESSION['orderTotal']; ?>
             </span>
-            <form method="POST">
-                <button type="submit" name="confirmOrder"> Confirm Order </button>
-            </form>
         </div>
+        <form method="POST" class="confirmButton">
+            <button type="submit" name="confirmOrder" class="checkout"> Confirm Order </button>
+            <button type="submit" name="clearOrder" class="checkout"> Clear Order </button>
+        </form>
     </div>
 
     <hr>
@@ -90,12 +89,12 @@ if (isset($_POST['selectedItemValue'])) {
         </form>
     </section>
 
-    <form action="./views/checkout.php" method="get" class="checkout">
+    <!-- <form method="get">
         <input type="hidden" name="subTotal" value="sub total amount">
         <button type="submit">
             Proceed to payment
         </button>
-    </form>
+    </form> -->
 
 
 </body>

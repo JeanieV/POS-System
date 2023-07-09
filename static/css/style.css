@@ -12,6 +12,7 @@ body {
     background-color: white;
     color: #47484A;
     font-size: 25px;
+    margin-bottom: 20px;
 }
 
 
@@ -41,7 +42,7 @@ button:hover {
     width: 30vw;
     height: 80vh;
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .homeCard:hover {
@@ -88,18 +89,59 @@ h3 {
 }
 
 .card-image{
-    width: 180px;
-    height: 200px;
+    width: 220px;
+    height: 250px;
 }
 
 .checkout {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    width: 100px;
+    margin-top: 20px;
+    background-color: #47484A;
+    font-size: 20px;
+    color: white;
+    padding: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
-.checkout button {
-    margin: 1rem 25vw;
-    padding: 1rem;
-    background-color: cornflowerblue;
+.checkout:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px #47484A;
+}
+
+.checkoutPay {
+    width: 150px;
+    margin-top: 20px;
+    background-color: #B4F8C8;
+    font-size: 20px;
+    color: #47484A;
+    padding: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.checkoutPay:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px #47484A;
+}
+
+.confirmButton{
+    margin: auto;
+    margin-top: 20px;
+}
+
+
+ul {
+ margin: auto;
+}
+
+.itemList{
+    margin: auto;
+    display: flex;
+}
+
+.logOutStyle {
+    margin-left: 15px;
+    width: 70px;
+    height: 70px;
 }
