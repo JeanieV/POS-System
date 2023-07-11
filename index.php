@@ -18,10 +18,14 @@ if (isset($_POST['selectedItemValue'])) {
         }
     }
 
+
     if ($selectedItem) {
         addItem($selectedItem);
+        $_SESSION['selectedItem'] = $selectedItem;
     }
 }
+
+
 ?>
 
 <!DOCTYPE html>

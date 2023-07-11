@@ -15,6 +15,7 @@ if (!isset($_SESSION['orderTotal'])) {
 // Process of uploading data from data.json
 $jsonFile = 'data.json';
 
+// All the items gets pushed into the array
 function loadData($jsonFile)
 {
     $json = file_get_contents($jsonFile);
@@ -23,13 +24,11 @@ function loadData($jsonFile)
     foreach ($items as $item) {
         array_push($menuItemArray, new MenuItem($item->barcode, $item->name, $item->price, $item->image));
     }
-
     return $menuItemArray;
 }
 
 // 'Storing' the items in the array
 $_SESSION['menuItemArray'] = loadData($jsonFile);
-
 
 
 // Adds the menu order to the array
@@ -44,6 +43,8 @@ function addItem(MenuItem $menuItem)
     return;
 }
 
+
+// If the user didn't select an item, they will not be directed to checkout
 if(isset($_POST['confirmOrder'])){
 
     if($_SESSION['orderTotal'] !== 0){
@@ -55,6 +56,7 @@ if(isset($_POST['confirmOrder'])){
    
 }
 
+// If the user clicks on Clear Order, the order total will be 0 again
 if(isset($_POST['clearOrder'])){
     $_SESSION['orderTotal'] = 0;
 }

@@ -88,7 +88,15 @@ h3 {
     text-align: center;
 }
 
-.card-image{
+h4 {
+    font-size: 23px;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    background-color: #C7A19B;
+}
+
+.card-image {
     width: 220px;
     height: 250px;
 }
@@ -125,23 +133,35 @@ h3 {
     box-shadow: 0 10px 30px #47484A;
 }
 
-.confirmButton{
+.confirmButton {
     margin: auto;
     margin-top: 20px;
 }
 
 
-ul {
- margin: auto;
+.listImage {
+    width: 150px;
+    height: 160px;
 }
 
-.itemList{
-    margin: auto;
-    display: flex;
-}
 
 .logOutStyle {
     margin-left: 15px;
     width: 70px;
     height: 70px;
 }
+
+.invoiceForm {
+    background-color: white;
+    width: 60vw;
+    margin: auto;
+}
+
+table {
+    margin: auto;
+}
+
+td {
+    padding: 20px;
+}
+

@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
+require '../model/MenuItem.php';
 require '../include/calculateVAT.php';
 
 
@@ -15,6 +15,13 @@ if (isset($_GET['payment'])) {
     session_unset();
     header("Location: ./thankYou.php");
 }
+
+// Calculation of VAT stored in session variable
+if (!isset($_GET['payment'])) {
+    $_SESSION['vatAmount'] = calculateVat($_SESSION['orderTotal']);
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -41,23 +48,79 @@ if (isset($_GET['payment'])) {
 
     <hr>
 
-    <h2>Items Purchased:</h2>
+    <div class="invoiceForm">
+        <h2> Items Purchased: </h2>
 
-    <div class="itemList">
+        <hr>
+
+        <?php
+        $heading = <<<DELIMITER
+        <table>
+            <tr>
+                <th> <h4> Product </h4> </th>
+                <th> <h4> Product Name </h4> </th>
+                <th> <h4> Product Price </h4> </th>
+                <th> <h4> Barcode </h4> <th>
+            </tr>
+        DELIMITER;
+        $rows = '';
+
+        foreach ($_SESSION['order'] as $menuItem) {
+
+            $row = <<<DELIMITER
+            <tr>
+                <td><img src="../static/img/{$menuItem->get_image()}" alt="Menu Item Image" class="listImage"></td>
+                <td><h3>{$menuItem->get_name()}</h3></td>
+                <td><h3>R {$menuItem->get_price()}</h3></td>
+                <td><h3>{$menuItem->get_barcode()}</h3></td>
+            </tr>
+            DELIMITER;
+            $rows .= $row;
+        }
+
+        $table = <<<DELIMITER
+        {$heading}
+        {$rows}
+        </table>
+        DELIMITER;
+        echo $table;
+        ?>
+
+        <hr>
+
+        <h3>
+            <table>
+                <tr>
+                    <td>
+                        Amount:
+                    </td>
+                    <td>
+                        <?php echo "R " . $_SESSION['orderTotal']; ?>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        VAT Amount 15%:
+                    </td>
+                    <td>
+                        <?php echo "R " . $_SESSION['vatAmount']; ?>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Subtotal for all items: <br> (excl VAT)
+                    </td>
+                    <td>
+                        <?php echo "R " . $_SESSION['orderTotal']; ?>
+                    </td>
+                </tr>
+            </table>
+        </h3>
     </div>
 
     <hr>
-
-    <h2>
-        Amount: R<span>
-            <?php echo $_SESSION['orderTotal']; ?>
-        </span>
-        <br>
-        VAT Amount: R <span>0.00</span>
-        <br>
-        <br>
-        Subtotal for all items: R<span>0.00</span>
-    </h2>
 
     <div class="till__display">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET" class="confirmButton">

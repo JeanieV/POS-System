@@ -1,25 +1,15 @@
 <?php
 session_start();
-require '../model/MenuItem.php';
-
-
 
 // Home button
 if (isset($_POST['homeButton'])) {
     header("Location: ../index.php");
 }
 
-
-
-
-
-
-
-function calculateVat($PurchasedItemsTotal)
+function calculateVat($amount)
 {
-    $vat = $PurchasedItemsTotal * 0.15;
-    $vatInclusiveTotal = $PurchasedItemsTotal + $vat;
+    $vat = $amount * 0.15;
+    $vatInclusiveTotal = $amount + $vat;
     return $vatInclusiveTotal;
 }
-
 ?>
