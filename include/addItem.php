@@ -36,17 +36,14 @@ $_SESSION['menuItemArray'] = loadData($jsonFile);
 // Adds the menu order to the array
 function addItem(MenuItem $menuItem)
 {
-
     // Add the menu item to the order session variable
     $_SESSION['order'][] = $menuItem;
-    
+
     // Add the item's price to the orderTotal session variable
     $_SESSION['orderTotal'] += $menuItem->get_price();
 
     return;
 }
-
-
 
 
 // If the user didn't select an item, they will not be directed to checkout
@@ -64,7 +61,6 @@ if (isset($_POST['confirmOrder'])) {
 if (isset($_POST['clearOrder'])) {
     $_SESSION['orderTotal'] = 0;
     $_SESSION['order'] = [];
-
 }
 
 ?>

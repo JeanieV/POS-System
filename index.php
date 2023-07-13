@@ -24,6 +24,8 @@ if (isset($_POST['selectedItemValue'])) {
         $_SESSION['selectedItem'] = $selectedItem;
     }
 }
+
+
 ?>
 
 <!DOCTYPE html>
