@@ -8,6 +8,7 @@ error_reporting(E_ALL);
 session_start();
 require './include/addItem.php';
 
+// If the user clicks on the item, it will be added to the array
 if (isset($_POST['selectedItemValue'])) {
 
     $selectedItem = null;
@@ -18,14 +19,11 @@ if (isset($_POST['selectedItemValue'])) {
         }
     }
 
-
     if ($selectedItem) {
         addItem($selectedItem);
         $_SESSION['selectedItem'] = $selectedItem;
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -66,6 +64,7 @@ if (isset($_POST['selectedItemValue'])) {
             <div class="cardContainer">
                 <?php
                 foreach ($_SESSION['menuItemArray'] as $menuItem) {
+
                     ?>
                     <button type="submit" name="selectedItemValue" value="<?php echo $menuItem->get_name(); ?>"
                         class="homeCard">
@@ -92,13 +91,6 @@ if (isset($_POST['selectedItemValue'])) {
             </div>
         </form>
     </section>
-
-    <!-- <form method="get">
-        <input type="hidden" name="subTotal" value="sub total amount">
-        <button type="submit">
-            Proceed to payment
-        </button>
-    </form> -->
 
 
 </body>

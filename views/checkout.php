@@ -1,12 +1,12 @@
 <?php
-
+require '../model/MenuItem.php';
 
 // display error codes and messages
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require '../model/MenuItem.php';
+
 require '../include/calculateVAT.php';
 
 
@@ -19,6 +19,7 @@ if (isset($_GET['payment'])) {
 // Calculation of VAT stored in session variable
 if (!isset($_GET['payment'])) {
     $_SESSION['vatAmount'] = calculateVat($_SESSION['orderTotal']);
+    $_SESSION['vat'] = vatAmount($_SESSION['orderTotal']);
 }
 
 
@@ -104,16 +105,16 @@ if (!isset($_GET['payment'])) {
                         VAT Amount 15%:
                     </td>
                     <td>
-                        <?php echo "R " . $_SESSION['vatAmount']; ?>
+                        <?php echo "R " . $_SESSION['vat']; ?>
                     </td>
                 </tr>
 
                 <tr>
                     <td>
-                        Subtotal for all items: <br> (excl VAT)
+                        Total for all items:
                     </td>
                     <td>
-                        <?php echo "R " . $_SESSION['orderTotal']; ?>
+                        <?php echo "R " . $_SESSION['vatAmount']; ?>
                     </td>
                 </tr>
             </table>

@@ -12,6 +12,7 @@ if (!isset($_SESSION['orderTotal'])) {
     $_SESSION['orderTotal'] = 0;
 }
 
+
 // Process of uploading data from data.json
 $jsonFile = 'data.json';
 
@@ -31,12 +32,14 @@ function loadData($jsonFile)
 $_SESSION['menuItemArray'] = loadData($jsonFile);
 
 
+
 // Adds the menu order to the array
 function addItem(MenuItem $menuItem)
 {
+
     // Add the menu item to the order session variable
     $_SESSION['order'][] = $menuItem;
-
+    
     // Add the item's price to the orderTotal session variable
     $_SESSION['orderTotal'] += $menuItem->get_price();
 
@@ -44,21 +47,24 @@ function addItem(MenuItem $menuItem)
 }
 
 
-// If the user didn't select an item, they will not be directed to checkout
-if(isset($_POST['confirmOrder'])){
 
-    if($_SESSION['orderTotal'] !== 0){
+
+// If the user didn't select an item, they will not be directed to checkout
+if (isset($_POST['confirmOrder'])) {
+
+    if ($_SESSION['orderTotal'] !== 0) {
         header("Location: ./views/checkout.php");
-    }
-    else{
+    } else {
         echo "<h2> Please select an item to be directed to Checkout </h2>";
     }
-   
+
 }
 
 // If the user clicks on Clear Order, the order total will be 0 again
-if(isset($_POST['clearOrder'])){
+if (isset($_POST['clearOrder'])) {
     $_SESSION['orderTotal'] = 0;
+    $_SESSION['order'] = [];
+
 }
 
 ?>

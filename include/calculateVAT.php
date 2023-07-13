@@ -12,4 +12,9 @@ function calculateVat($amount)
     $vatInclusiveTotal = $amount + $vat;
     return $vatInclusiveTotal;
 }
+
+function vatAmount($amount){
+    $vat = $amount * 0.15;
+    return $vat;
+}
 ?>
